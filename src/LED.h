@@ -8,8 +8,8 @@ extern "C" {
 
 typedef enum LED {
   LED_GREEN  = GPIO_Pin_12,
-  LED_RED    = GPIO_Pin_13,
-  LED_ORANGE = GPIO_Pin_14,
+  LED_ORANGE = GPIO_Pin_13,
+  LED_RED    = GPIO_Pin_14,
   LED_BLUE   = GPIO_Pin_15,
 } LED;
 
