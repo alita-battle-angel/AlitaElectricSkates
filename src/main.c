@@ -8,7 +8,7 @@ int main()
   Clock_HSI_Init();
   Clock_HSE_Init();
   LED_Init();
-  LED_ModuleTest()
+  LED_ModuleTest();
   if(iWD_Fault_is_Detected())
   {
      LED_On(LED_RED);
