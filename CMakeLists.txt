@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 set(CMAKE_TOOLCHAIN_FILE cmake/arm-gcc-toolchain.cmake)
-project(AlitaElectricSkaters)
+project(AlitaElectricSkates)
 enable_language(ASM)
 
 set(StdPeriph_PATH "${CMAKE_SOURCE_DIR}/libs/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0" CACHE PATH "path to the Standard Peripheral Library" FORCE)
