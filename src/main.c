@@ -1,34 +1,24 @@
-#include "stm32f4xx.h"
-
 #include "LED.h"
 #include "Clock.h"
 #include "Timer.h"
-
-const LED leds[] = { LED_GREEN, LED_RED, LED_ORANGE, LED_BLUE };
-
-int main(void) {
+#include "Indep_WD.h"
+#include "ModuleUnitTests.h"
+int main()
+{
   Clock_HSI_Init();
   Clock_HSE_Init();
   LED_Init();
+  LED_ModuleTest()
+  if(iWD_Fault_is_Detected())
+  {
+     LED_On(LED_RED);
+  }
   Timer_WaitInit();
-
-  LED all_leds = 0;
-  for (uint8_t i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
-    all_leds |= leds[i];
-  }
-  for (uint8_t i = 0; i < 3; i++) {
-    LED_On(all_leds);
-    Timer_WaitMilisec(75);
-    LED_Off(all_leds);
-    Timer_WaitMilisec(100);
-  }
-
-  while (1) {
-    for (uint8_t i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
-      LED led = leds[i];
-      LED_On(led);
-      Timer_WaitMilisec(100);
-      LED_Off(led);
-    }
+  Button_ModuleTest();
+  iWD_Init();
+  while(1)
+  {
+   iWD_RefreshCountet();
+   Button_ModuleTestLoop();
   }
 }
