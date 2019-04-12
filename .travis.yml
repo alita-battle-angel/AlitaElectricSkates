@@ -1,19 +1,22 @@
 language: minimal
+dist: xenial
 
 addons:
   apt:
+    sources:
+      - sourceline: ppa:team-gcc-arm-embedded/ppa
     packages:
-      - gcc-arm-none-eabi
+      - gcc-arm-embedded
 
 install: |
   # Standard Peripheral Library
   StdPeriph_LIB_FILE="en.stm32f4_dsp_stdperiph_lib.zip"
   wget -O "$StdPeriph_LIB_FILE" "https://www.st.com/content/ccc/resource/technical/software/firmware/e2/a0/0f/e7/bd/4f/4b/da/stm32f4_dsp_stdperiph_lib.zip/files/stm32f4_dsp_stdperiph_lib.zip/jcr:content/translations/en.stm32f4_dsp_stdperiph_lib.zip" &&
-  unzip "$StdPeriph_LIB_FILE" -d libs
+  unzip "$StdPeriph_LIB_FILE" -d libs &&
   rm "$StdPeriph_LIB_FILE"
 
 env:
-  - BUILD_CONFIGURATION=Debug
+  # - BUILD_CONFIGURATION=Debug
   - BUILD_CONFIGURATION=Release
 
 script: |
