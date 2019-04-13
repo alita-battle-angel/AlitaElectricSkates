@@ -15,7 +15,7 @@ int main() {
   }
   Button_ModuleTest();
   iWD_Init();
-  while(1) {
+  while (1) {
     iWD_RefreshCountet();
     Button_ModuleTestLoop();
   }

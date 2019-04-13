@@ -47,7 +47,7 @@ void Button_Thershold(Button_InitStructure* Button) {
   }
   Button_CheckEdgeSignal(Button);
   Button_CheckPressState(Button);
-  Button->LastButtonState =  Button->CurrentButtonState;
+  Button->LastButtonState = Button->CurrentButtonState;
 }
 
 void Button_Check(Button_InitStructure* Button) {
