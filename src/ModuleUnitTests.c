@@ -4,7 +4,7 @@
 #include "Timer.h"
 
 Button_InitStructure ButtonControl;
-const LED leds[] = { LED_GREEN, LED_RED, LED_ORANGE, LED_BLUE };
+const LED leds[] = { LED_GREEN, LED_ORANGE, LED_RED, LED_BLUE };
 
 void LED_ModuleTest(void) {
   LED all_leds = 0;
@@ -13,9 +13,9 @@ void LED_ModuleTest(void) {
   }
   for (uint8_t i = 0; i < 3; i++) {
     LED_On(all_leds);
-    Timer_WaitMilisec(75);
+    Timer_WaitMillisec(75);
     LED_Off(all_leds);
-    Timer_WaitMilisec(100);
+    Timer_WaitMillisec(100);
   }
 }
 
@@ -23,7 +23,7 @@ void LED_ModuleTestLoop(void) {
   for (uint8_t i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
     LED led = leds[i];
     LED_On(led);
-    Timer_WaitMilisec(100);
+    Timer_WaitMillisec(500);
     LED_Off(led);
   }
 }

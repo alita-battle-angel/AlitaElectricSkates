@@ -6,24 +6,21 @@ extern "C" {
 
 #include "stm32f4xx.h"
 
-typedef enum TimeBase {
-  TimeBase_Microsec = 42,
-  TimeBase_Milisec  = 42000,
-} TimeBase;
+typedef uint32_t Time;
 
-void Timer_TraceInit(void);
-void Timer_TraceBase(TimeBase Base);
-void Timer_TraceBegin(void);
-void Timer_TraceEnd(void);
-uint32_t Timer_TraceGetTime(void);
+typedef enum TimeUnit {
+  TimeUnit_Microsec = 42,
+  TimeUnit_Millisec = 42000,
+} TimeUnit;
 
-void Timer_WaitInit(void);
-void Timer_WaitTimeBase(TimeBase Base);
-void Timer_WaitMilisec(uint16_t Time);
-void Timer_WaitMicrosec(uint16_t Time);
-void Timer_WaitLoop(void);
-void TIM6_DAC_IRQHandler(void);
-void TIM3_IRQHandler(void);
+void Timer_Trace_Init(TimeUnit unit);
+void Timer_Trace_Reset(void);
+Time Timer_Trace_GetTime(void);
+
+void Timer_Wait_Init(void);
+void Timer_Wait(TimeUnit unit, Time delay);
+void Timer_WaitMillisec(Time delay);
+void Timer_WaitMicrosec(Time delay);
 
 #ifdef __cplusplus
 }
