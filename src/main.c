@@ -10,6 +10,7 @@ int main() {
   LED_Init();
   Timer_Trace_Init(TimeUnit_Millisec);
   Timer_Wait_Init();
+  Timer_ModuleTest();
   LED_ModuleTest();
   if (iWD_Fault_is_Detected()) {
     LED_On(LED_RED);

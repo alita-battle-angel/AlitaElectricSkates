@@ -11,7 +11,6 @@ void Timer_Wait_Init(void) {
   TIM_BaseInit.TIM_Prescaler         = TimeUnit_Millisec;
   TIM_BaseInit.TIM_RepetitionCounter = 0;
   TIM_TimeBaseInit(TIM6, &TIM_BaseInit);
-  TIM_SelectOnePulseMode(TIM6, TIM_OPMode_Single);
 
   TIM_Cmd(TIM6, DISABLE);
 }
@@ -38,12 +37,11 @@ Time Timer_Trace_GetTime(void) {
 }
 
 void Timer_Wait(TimeUnit unit, Time delay) {
-  TIM6->PSC = unit;
-  TIM_SetAutoreload(TIM6, delay);
+  TIM_PrescalerConfig(TIM6, unit, TIM_PSCReloadMode_Immediate);
   TIM_SetCounter(TIM6, 0);
   TIM_Cmd(TIM6, ENABLE);
-  while (TIM6->CR1 & TIM_CR1_CEN);
-  TIM_ClearITPendingBit(TIM6, TIM_IT_Update);
+  while (TIM_GetCounter(TIM6) < delay);
+  TIM_Cmd(TIM6, DISABLE);
 }
 
 void Timer_WaitMillisec(Time delay) { Timer_Wait(TimeUnit_Millisec, delay); }
