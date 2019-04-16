@@ -13,11 +13,11 @@ typedef enum TimeUnit {
   TimeUnit_Millisec = 42000,
 } TimeUnit;
 
-void Timer_Trace_Init(TimeUnit unit);
-void Timer_Trace_Reset(void);
-Time Timer_Trace_GetTime(void);
+void Timer_InitTime(TimeUnit unit);
+void Timer_ResetTime(void);
+Time Timer_GetTime(void);
 
-void Timer_Wait_Init(void);
+void Timer_InitWait(void);
 void Timer_Wait(TimeUnit unit, Time delay);
 void Timer_WaitMillisec(Time delay);
 void Timer_WaitMicrosec(Time delay);

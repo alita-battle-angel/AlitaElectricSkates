@@ -68,15 +68,14 @@ void Button_ModuleTest(void) {
   Button_Init(&ButtonControl);
 }
 
-void Timer_ModuleTest(void)
-{
-  Timer_WaitMicrosec(3000); 
-  if(TIM_GetPrescaler(TIM6) != TimeUnit_Microsec) {
-     LED_On(LED_RED);
+void Timer_ModuleTest(void) {
+  Timer_WaitMicrosec(3000);
+  if (TIM_GetPrescaler(TIM6) != TimeUnit_Microsec) {
+    LED_On(LED_RED);
   }
   Timer_WaitMillisec(3000);
-   if(TIM_GetPrescaler(TIM6) != TimeUnit_Millisec) {
-     LED_On(LED_BLUE);
+  if (TIM_GetPrescaler(TIM6) != TimeUnit_Millisec) {
+    LED_On(LED_BLUE);
   }
   Timer_WaitMillisec(3000);
 }

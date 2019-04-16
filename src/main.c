@@ -8,8 +8,8 @@ int main() {
   Clock_HSI_Init();
   Clock_HSE_Init();
   LED_Init();
-  Timer_Trace_Init(TimeUnit_Millisec);
-  Timer_Wait_Init();
+  Timer_InitTime(TimeUnit_Millisec);
+  Timer_InitWait();
   Timer_ModuleTest();
   LED_ModuleTest();
   if (iWD_Fault_is_Detected()) {
