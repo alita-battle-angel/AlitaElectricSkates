@@ -9,7 +9,7 @@ extern "C" {
 void Clock_HSI_Init(void);
 void Clock_HSE_Init(void);
 void Clock_InitUSB(void);
-
+void RCC_IRQHandler(void);
 #ifdef __cplusplus
 }
 #endif
