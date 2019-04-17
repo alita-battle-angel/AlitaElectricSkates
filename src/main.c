@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include "LED.h"
 #include "Clock.h"
 #include "Timer.h"
@@ -17,7 +18,7 @@ int main() {
   }
   Button_ModuleTest();
   iWD_Init();
-  while (1) {
+  while (true) {
     iWD_RefreshCountet();
     Button_ModuleTestLoop();
   }

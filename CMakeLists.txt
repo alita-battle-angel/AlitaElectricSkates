@@ -11,15 +11,15 @@ function(add_flags FLAGS_VAR)
   set("${FLAGS_VAR}" "${${FLAGS_VAR}} ${JOINED_FLAGS}" PARENT_SCOPE)
 endfunction()
 
-# CPU-specific compiler flags
-set(CPU_COMPILER_FLAGS
+set(COMPILER_FLAGS
+  # CPU-specific
   -mcpu=cortex-m4 -mlittle-endian -mthumb -mthumb-interwork
   -mfloat-abi=hard -mfpu=fpv4-sp-d16
   --specs=nosys.specs
 )
-add_flags(CMAKE_C_FLAGS ${CPU_COMPILER_FLAGS})
-add_flags(CMAKE_CXX_FLAGS ${CPU_COMPILER_FLAGS})
-add_flags(CMAKE_ASM_FLAGS ${CPU_COMPILER_FLAGS})
+add_flags(CMAKE_C_FLAGS ${COMPILER_FLAGS})
+add_flags(CMAKE_CXX_FLAGS ${COMPILER_FLAGS})
+add_flags(CMAKE_ASM_FLAGS ${COMPILER_FLAGS})
 # add linker script for the target MCU
 # In the nutshell, linker scripts control where (in the physical memory):
 # 1. RAM, stack and flash memory begin

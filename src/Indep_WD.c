@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include "Indep_WD.h"
 
 uint16_t GuardTime = 5000; //ms
@@ -12,12 +13,12 @@ void iWD_Init(void) {
   IWDG_Enable();
 }
 
-int iWD_Fault_is_Detected(void) {
+bool iWD_Fault_is_Detected(void) {
   if (RCC_GetFlagStatus(RCC_FLAG_IWDGRST) != RESET) {
     RCC_ClearFlag();
-    return 1;
+    return true;
   }
-  return 0;
+  return false;
 }
 
 void iWD_RefreshCountet(void) {

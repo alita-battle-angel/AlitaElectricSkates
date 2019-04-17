@@ -7,7 +7,7 @@ void Timer_InitWait(void) {
   TIM_TimeBaseInitTypeDef TIM_BaseInit;
   TIM_BaseInit.TIM_ClockDivision     = TIM_CKD_DIV1;  // 21Mhz * 2x
   TIM_BaseInit.TIM_CounterMode       = TIM_CounterMode_Up;
-  TIM_BaseInit.TIM_Period            = 0xFFFFFFFF;
+  TIM_BaseInit.TIM_Period            = UINT32_MAX;
   TIM_BaseInit.TIM_Prescaler         = 0;
   TIM_BaseInit.TIM_RepetitionCounter = 0;
   TIM_TimeBaseInit(TIM6, &TIM_BaseInit);
@@ -23,7 +23,7 @@ void Timer_InitTime(TimeUnit unit) {
   TIM_TimeBaseInitTypeDef TIM_BaseInit;
   TIM_BaseInit.TIM_ClockDivision     = TIM_CKD_DIV1;  // 21Mhz * 2x
   TIM_BaseInit.TIM_CounterMode       = TIM_CounterMode_Up;
-  TIM_BaseInit.TIM_Period            = 0xFFFFFFFF;
+  TIM_BaseInit.TIM_Period            = UINT32_MAX;
   TIM_BaseInit.TIM_Prescaler         = unit;
   TIM_BaseInit.TIM_RepetitionCounter = 0;
   TIM_TimeBaseInit(TIM5, &TIM_BaseInit);
