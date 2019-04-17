@@ -13,15 +13,17 @@ void FeedBackADC_ClockInit(void)
    ADC_Prescaler        = 2
    ADC_CLK              = 10.5 Mhz
    T_ADC_CLK            = 0.095 uSec
-   Channel_SampleTime   = 144(144*0.095us ->14 uSec)
+   Channel_SampleTime   = 144(144*0.095us ->14 us)
    F_Channel_Conversiom = 67 Khz 
    */
   
   ADC_InitTypeDef        ADCSetup;
   ADC_CommonInitTypeDef  ComonInitADC;
   ADC_CommonStructInit(&ComonInitADC);
-  ComonInitADC.ADC_Prescaler		= ADC_Prescaler_Div2;// 21Mhz(APB2 CLK) /2 = 10.5 Mhz(100us)
+ 
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
+  ComonInitADC.ADC_Prescaler		= ADC_Prescaler_Div2;// 21Mhz(APB2 CLK) /2 = 10.5 Mhz(0,095 us)
+  ADC_CommonInit(&ComonInitADC);
   ADC_StructInit(&ADCSetup);
   ADCSetup.ADC_ContinuousConvMode	= ENABLE;
   ADCSetup.ADC_DataAlign	        = ADC_DataAlign_Right;
@@ -29,7 +31,7 @@ void FeedBackADC_ClockInit(void)
   ADCSetup.ADC_Resolution           = ADC_Resolution_12b;
   ADCSetup.ADC_ScanConvMode         = ENABLE;
   ADCSetup.ADC_NbrOfConversion      = 1;
-  ADC_RegularChannelConfig(ADC1,ADC_Channel_0,1,ADC_SampleTime_144Cycles);//144*0.1ms = 14.4 ms  - 70 KHz;
+  ADC_RegularChannelConfig(ADC1,ADC_Channel_0,1,ADC_SampleTime_144Cycles);//144*0.1ms = 14.4 us  - 70 KHz;
   ADC_Init(ADC1,&ADCSetup);
   ADC_Cmd(ADC1,ENABLE);
   ADC_SoftwareStartConv(ADC1);
