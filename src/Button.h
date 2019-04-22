@@ -33,11 +33,11 @@ typedef struct Button_InitStructure
   Button_SignalEdgeChanged OnEdgeStateChanged;
 } Button_InitStructure;
 
-void Button_Init(Button_InitStructure* Button);
+void Button_Init           (Button_InitStructure* Button);
 void Button_CheckPressState(Button_InitStructure* Button);
 void Button_CheckEdgeSignal(Button_InitStructure* Button);
-void Button_Thershold(Button_InitStructure* Button);
-void Button_Check(Button_InitStructure* Button);
+void Button_Thershold      (Button_InitStructure* Button);
+void Button_Check          (Button_InitStructure* Button);
 
 #ifdef __cplusplus
 }

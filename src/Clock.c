@@ -27,7 +27,7 @@ void Clock_HSI_Init(void) {
   while (RCC_GetFlagStatus(RCC_FLAG_PLLRDY) != SET);
   RCC_HCLKConfig(RCC_SYSCLK_Div1);    // 168 mhz AHB (OTG HS, ETH, DMA, CRC, GPIOx)
   RCC_PCLK1Config(RCC_HCLK_Div8);     // 21 mhz APB1 (DAC, PWR, I2Cx, SPIx)
-  RCC_PCLK2Config(RCC_HCLK_Div4);     
+  RCC_PCLK2Config(RCC_HCLK_Div4);
 }
 
 // 2-nd Stage
@@ -67,8 +67,8 @@ void Clock_InitUSB(void) {
 }
 
 void RCC_IRQHandler(void){
-  if(RCC_GetITStatus(RCC_IT_CSS) == SET){
+  if (RCC_GetITStatus(RCC_IT_CSS) == SET) {
     Clock_HSI_Init();
     RCC_ClearITPendingBit(RCC_IT_CSS);
-  } 
+  }
 }

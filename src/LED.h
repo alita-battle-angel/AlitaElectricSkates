@@ -14,8 +14,8 @@ typedef enum LED {
 } LED;
 
 void LED_Init(void);
-void LED_On(LED led);
-void LED_Off(LED led);
+void LED_On    (LED led);
+void LED_Off   (LED led);
 void LED_Toggle(LED led);
 
 #ifdef __cplusplus
