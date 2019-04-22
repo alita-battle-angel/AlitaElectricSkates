@@ -4,11 +4,15 @@
 [![contributors: welcome](https://img.shields.io/badge/contributors-welcome-brightgreen.svg?style=flat-square)](https://github.com/M0nteCarl0/AlitaElectricSkates)
 [![Alita: Battle Angel](https://img.shields.io/badge/Alita-Battle%20Angel-red.svg?style=flat-square)](https://en.wikipedia.org/wiki/Alita:_Battle_Angel)
 
-Source code, documentation, 3D models and blueprints of parts for **roller skates with electric motors**, inspired by a fictional game called Motorball from the manga [Battle Angel Alita](https://en.wikipedia.org/wiki/Battle_Angel_Alita) and its live-action movie adaptation [Alita: Battle Angel](https://en.wikipedia.org/wiki/Alita:_Battle_Angel). Author of the idea is [u/TechNotarius](https://reddit.com/user/TechNotarius) (@M0nteCarl0) who was almost immediately joined by [u/dmitmel](https://reddit.com/user/dmitmel) (@dmitmel).
+Source code, documentation, 3D models and blueprints of parts for **roller skates with electric motors**, inspired by a fictional game called Motorball from the manga [Battle Angel Alita](https://en.wikipedia.org/wiki/Battle_Angel_Alita) and its live-action movie adaptation [Alita: Battle Angel](https://en.wikipedia.org/wiki/Alita:_Battle_Angel). Author of the idea is [u/TechNotarius](https://reddit.com/user/TechNotarius) ([@M0nteCarl0](https://github.com/M0nteCarl0)) who was almost immediately joined by [u/dmitmel](https://reddit.com/user/dmitmel) ([@dmitmel](https://github.com/dmitmel)).
+
+[u/dmitmel](https://reddit.com/user/dmitmel) is also writing a series of posts on [/r/Gunnm](https://reddit.com/r/Gunnm) (and [/r/AlitaBattleAngel](https://reddit.com/r/AlitaBattleAngel)):
+
+- [Part 1](https://www.reddit.com/r/Gunnm/comments/bdtk5i/alita_experience_20_making_of_street_motorball/) ([repost](https://www.reddit.com/r/alitabattleangel/comments/bdtkah/alita_experience_20_making_of_street_motorball/))
 
 ## Motivation
 
-**Note:** this part was written by **u/dmitmel**, so it's purely subjective and contains personal opinions
+**Note:** this part was written by [**u/dmitmel**](https://reddit.com/user/dmitmel), so it's purely subjective and contains personal opinions
 
 Let me tell you a story.
 
