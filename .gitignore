@@ -1,3 +1,7 @@
 libs/*
 !libs/.gitkeep
 build/
+compile_commands.json
+compile_flags.txt
+.ccls
+.cquery
