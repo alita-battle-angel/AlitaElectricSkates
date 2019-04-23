@@ -4,13 +4,13 @@ void Timer_InitWait(void) {
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);
   TIM_DeInit(TIM6);
 
-  TIM_TimeBaseInitTypeDef TIM_BaseInit;
-  TIM_BaseInit.TIM_ClockDivision     = TIM_CKD_DIV1;  // 21Mhz * 2x
-  TIM_BaseInit.TIM_CounterMode       = TIM_CounterMode_Up;
-  TIM_BaseInit.TIM_Period            = UINT32_MAX;
-  TIM_BaseInit.TIM_Prescaler         = 0;
-  TIM_BaseInit.TIM_RepetitionCounter = 0;
-  TIM_TimeBaseInit(TIM6, &TIM_BaseInit);
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseInitOpts;
+  TIM_TimeBaseInitOpts.TIM_ClockDivision     = TIM_CKD_DIV1;  // 21Mhz * 2x
+  TIM_TimeBaseInitOpts.TIM_CounterMode       = TIM_CounterMode_Up;
+  TIM_TimeBaseInitOpts.TIM_Period            = UINT32_MAX;
+  TIM_TimeBaseInitOpts.TIM_Prescaler         = 0;
+  TIM_TimeBaseInitOpts.TIM_RepetitionCounter = 0;
+  TIM_TimeBaseInit(TIM6, &TIM_TimeBaseInitOpts);
   TIM_SelectOnePulseMode(TIM6, TIM_OPMode_Single);
 
   TIM_Cmd(TIM6, DISABLE);
@@ -20,13 +20,13 @@ void Timer_InitTime(TimeUnit unit) {
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);
   TIM_DeInit(TIM5);
 
-  TIM_TimeBaseInitTypeDef TIM_BaseInit;
-  TIM_BaseInit.TIM_ClockDivision     = TIM_CKD_DIV1;  // 21Mhz * 2x
-  TIM_BaseInit.TIM_CounterMode       = TIM_CounterMode_Up;
-  TIM_BaseInit.TIM_Period            = UINT32_MAX;
-  TIM_BaseInit.TIM_Prescaler         = unit;
-  TIM_BaseInit.TIM_RepetitionCounter = 0;
-  TIM_TimeBaseInit(TIM5, &TIM_BaseInit);
+  TIM_TimeBaseInitTypeDef TIM_TimeBaseInitOpts;
+  TIM_TimeBaseInitOpts.TIM_ClockDivision     = TIM_CKD_DIV1;  // 21Mhz * 2x
+  TIM_TimeBaseInitOpts.TIM_CounterMode       = TIM_CounterMode_Up;
+  TIM_TimeBaseInitOpts.TIM_Period            = UINT32_MAX;
+  TIM_TimeBaseInitOpts.TIM_Prescaler         = unit;
+  TIM_TimeBaseInitOpts.TIM_RepetitionCounter = 0;
+  TIM_TimeBaseInit(TIM5, &TIM_TimeBaseInitOpts);
 }
 
 void Timer_ResetTime() {

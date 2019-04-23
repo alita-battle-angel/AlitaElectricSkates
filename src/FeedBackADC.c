@@ -17,20 +17,20 @@ void FeedBackADC_ClockInit(void) {
 
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
 
-  ADC_CommonInitTypeDef ComonInitADC;
-  ADC_CommonStructInit(&ComonInitADC);
-  ComonInitADC.ADC_Prescaler = ADC_Prescaler_Div2;  // 21Mhz(APB2 CLK) /2 = 10.5 Mhz(0,095 us)
-  ADC_CommonInit(&ComonInitADC);
+  ADC_CommonInitTypeDef ADC_CommonInitOpts;
+  ADC_CommonStructInit(&ADC_CommonInitOpts);
+  ADC_CommonInitOpts.ADC_Prescaler = ADC_Prescaler_Div2;  // 21Mhz(APB2 CLK) /2 = 10.5 Mhz(0,095 us)
+  ADC_CommonInit(&ADC_CommonInitOpts);
 
-  ADC_InitTypeDef ADCSetup;
-  ADC_StructInit(&ADCSetup);
-  ADCSetup.ADC_ContinuousConvMode   = ENABLE;
-  ADCSetup.ADC_DataAlign            = ADC_DataAlign_Right;
-  ADCSetup.ADC_ExternalTrigConvEdge = ADC_ExternalTrigConvEdge_None;
-  ADCSetup.ADC_Resolution           = ADC_Resolution_12b;
-  ADCSetup.ADC_ScanConvMode         = ENABLE;
-  ADCSetup.ADC_NbrOfConversion      = 1;
-  ADC_Init(ADC1, &ADCSetup);
+  ADC_InitTypeDef ADC_InitOpts;
+  ADC_StructInit(&ADC_InitOpts);
+  ADC_InitOpts.ADC_ContinuousConvMode   = ENABLE;
+  ADC_InitOpts.ADC_DataAlign            = ADC_DataAlign_Right;
+  ADC_InitOpts.ADC_ExternalTrigConvEdge = ADC_ExternalTrigConvEdge_None;
+  ADC_InitOpts.ADC_Resolution           = ADC_Resolution_12b;
+  ADC_InitOpts.ADC_ScanConvMode         = ENABLE;
+  ADC_InitOpts.ADC_NbrOfConversion      = 1;
+  ADC_Init(ADC1, &ADC_InitOpts);
 
   ADC_RegularChannelConfig(ADC1, ADC_Channel_0, 1, ADC_SampleTime_144Cycles);  //144*0.1ms = 14.4 us  - 70 KHz;
 
@@ -40,10 +40,10 @@ void FeedBackADC_ClockInit(void) {
 
 void FeedBackADC_GPIOInit(void) {
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-  GPIO_InitTypeDef GPIO_InitStructure;
-  GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN;
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
+  GPIO_InitTypeDef GPIO_InitOpts;
+  GPIO_InitOpts.GPIO_Pin  = GPIO_Pin_0;
+  GPIO_InitOpts.GPIO_Mode = GPIO_Mode_AN;
+  GPIO_Init(GPIOA, &GPIO_InitOpts);
 }
 
 uint16_t FeedBackADC_GetMeasuredVoltageLevel(void) {

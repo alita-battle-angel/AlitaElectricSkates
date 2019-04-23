@@ -1,13 +1,13 @@
 #include "Button.h"
 
 void Button_Init(Button_InitStructure* Button) {
-  GPIO_InitTypeDef GPIO_InitStructure;
-  GPIO_InitStructure.GPIO_Pin   = Button->Pin;
-  GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_DOWN;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-  GPIO_Init(Button->Port, &GPIO_InitStructure);
+  GPIO_InitTypeDef GPIO_InitOpts;
+  GPIO_InitOpts.GPIO_Pin   = Button->Pin;
+  GPIO_InitOpts.GPIO_Mode  = GPIO_Mode_IN;
+  GPIO_InitOpts.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitOpts.GPIO_PuPd  = GPIO_PuPd_DOWN;
+  GPIO_InitOpts.GPIO_Speed = GPIO_Speed_100MHz;
+  GPIO_Init(Button->Port, &GPIO_InitOpts);
   Button->LevelCounter          = 0;
   Button->CurrentEdge           = Button_SignalEdge_Falling;
 }
