@@ -4,11 +4,16 @@ dist: xenial
 addons:
   apt:
     sources:
+      - sourceline: deb https://apt.kitware.com/ubuntu/ xenial main
+        key_url: https://apt.kitware.com/keys/kitware-archive-latest.asc
       - sourceline: ppa:team-gcc-arm-embedded/ppa
     packages:
+      - cmake
       - gcc-arm-embedded
 
 install: |
+  # latest CMake
+  pip install --user cmake &&
   # Standard Peripheral Library
   StdPeriph_LIB_FILE="en.stm32f4_dsp_stdperiph_lib.zip"
   wget -O "$StdPeriph_LIB_FILE" "https://www.st.com/content/ccc/resource/technical/software/firmware/e2/a0/0f/e7/bd/4f/4b/da/stm32f4_dsp_stdperiph_lib.zip/files/stm32f4_dsp_stdperiph_lib.zip/jcr:content/translations/en.stm32f4_dsp_stdperiph_lib.zip" &&
