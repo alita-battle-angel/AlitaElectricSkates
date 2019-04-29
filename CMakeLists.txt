@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
+# convert relative paths to absolute when using target_sources
+cmake_policy(SET CMP0076 NEW)
 
 set(CMAKE_TOOLCHAIN_FILE cmake/arm-gcc-toolchain.cmake)
 project(AlitaElectricSkates)
@@ -31,23 +33,19 @@ set(ELF_EXE ${CMAKE_PROJECT_NAME}.elf)
 # ...but they need to be converted into .hex files to be flashed on the MCU
 set(HEX_EXE ${CMAKE_PROJECT_NAME}.hex)
 
-set(PROJECT_SOURCE_FILES main.c Clock.c Timer.c LED.c Button.c ErrorProvider.c Indep_WD.c ModuleUnitTests.c FeedBackADC.c)
-list(TRANSFORM PROJECT_SOURCE_FILES PREPEND "src/")
-
 set(StdPeriph_Driver_MODULES gpio rcc flash syscfg tim iwdg adc)
 list(TRANSFORM StdPeriph_Driver_MODULES PREPEND "${StdPeriph_PATH}/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_")
 list(TRANSFORM StdPeriph_Driver_MODULES APPEND ".c")
 
 add_executable(${ELF_EXE}
-  ${PROJECT_SOURCE_FILES}
+  # actual entry point of the program, executed when the controller is reset or started
+  "${StdPeriph_PATH}/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates/TrueSTUDIO/startup_stm32f40_41xxx.s"
   ${StdPeriph_Driver_MODULES}
-
   "${StdPeriph_PATH}/Libraries/STM32F4xx_StdPeriph_Driver/src/misc.c"
   # system clock configuration
   "${StdPeriph_PATH}/Project/STM32F4xx_StdPeriph_Templates/system_stm32f4xx.c"
-  # actual entry point of the program, executed when the controller is reset or started
-  "${StdPeriph_PATH}/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates/TrueSTUDIO/startup_stm32f40_41xxx.s"
 )
+add_subdirectory(src)
 
 target_include_directories(${ELF_EXE} PUBLIC
   "src"
