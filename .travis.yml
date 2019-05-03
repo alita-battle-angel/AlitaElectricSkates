@@ -28,3 +28,6 @@ script: |
   mkdir build && cd build &&
   cmake .. -DCMAKE_BUILD_TYPE="$BUILD_CONFIGURATION" &&
   cmake --build .
+
+notifications:
+  webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
