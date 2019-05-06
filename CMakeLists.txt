@@ -28,16 +28,13 @@ add_flags(CMAKE_ASM_FLAGS ${COMPILER_FLAGS})
 # 2. different sections (code, data etc) of the compiled program should be located
 add_flags(CMAKE_EXE_LINKER_FLAGS "-T${StdPeriph_PATH}/Project/STM32F4xx_StdPeriph_Templates/TrueSTUDIO/STM32F40_41xxx/STM32F417IG_FLASH.ld")
 
-# ARM GCC can generate only .elf executables...
-set(ELF_EXE ${CMAKE_PROJECT_NAME}.elf)
-# ...but they need to be converted into .hex files to be flashed on the MCU
-set(HEX_EXE ${CMAKE_PROJECT_NAME}.hex)
+set(MAIN_EXE ${CMAKE_PROJECT_NAME}.elf)
 
 set(StdPeriph_Driver_MODULES gpio rcc flash syscfg tim iwdg adc)
 list(TRANSFORM StdPeriph_Driver_MODULES PREPEND "${StdPeriph_PATH}/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_")
 list(TRANSFORM StdPeriph_Driver_MODULES APPEND ".c")
 
-add_executable(${ELF_EXE}
+add_executable(${MAIN_EXE}
   # actual entry point of the program, executed when the controller is reset or started
   "${StdPeriph_PATH}/Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates/TrueSTUDIO/startup_stm32f40_41xxx.s"
   ${StdPeriph_Driver_MODULES}
@@ -47,7 +44,7 @@ add_executable(${ELF_EXE}
 )
 add_subdirectory(src)
 
-target_include_directories(${ELF_EXE} PUBLIC
+target_include_directories(${MAIN_EXE} PUBLIC
   "src"
   "${StdPeriph_PATH}/Libraries/CMSIS/Include"
   "${StdPeriph_PATH}/Libraries/CMSIS/Device/ST/STM32F4xx/Include"
@@ -55,8 +52,8 @@ target_include_directories(${ELF_EXE} PUBLIC
   "${StdPeriph_PATH}/Project/STM32F4xx_StdPeriph_Templates"
 )
 
-target_compile_options(${ELF_EXE} PRIVATE -Wall)
-target_compile_definitions(${ELF_EXE} PUBLIC
+target_compile_options(${MAIN_EXE} PRIVATE -Wall)
+target_compile_definitions(${MAIN_EXE} PUBLIC
   # enables peripheral drivers, an abstraction layer over actual hardware and
   # peripheral registers (which is basically most of the SPL)
   USE_STDPERIPH_DRIVER
@@ -64,11 +61,12 @@ target_compile_definitions(${ELF_EXE} PUBLIC
   STM32F40_41xxx
 )
 
-add_custom_command(TARGET ${ELF_EXE} POST_BUILD
-  COMMAND "${CMAKE_OBJCOPY}" ARGS -O ihex ${ELF_EXE} ${HEX_EXE}
+add_custom_target(flash
+  COMMAND openocd -f "${CMAKE_SOURCE_DIR}/openocd.cfg" -c "program ${MAIN_EXE} verify reset exit"
+  DEPENDS ${MAIN_EXE}
 )
 
-add_custom_target(flash
-  COMMAND st-flash --format ihex write ${HEX_EXE}
-  DEPENDS ${ELF_EXE}
+add_custom_target(monitor
+  COMMAND openocd -f "${CMAKE_SOURCE_DIR}/openocd.cfg" -c "tpiu config internal /dev/stdout uart off 168000000" | itmdump
+  DEPENDS ${MAIN_EXE}
 )

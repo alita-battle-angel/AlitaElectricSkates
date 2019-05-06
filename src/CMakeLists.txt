@@ -1,4 +1,4 @@
-target_sources(${ELF_EXE} PUBLIC
+target_sources(${MAIN_EXE} PUBLIC
   Button.c
   Clock.c
   ErrorProvider.c
