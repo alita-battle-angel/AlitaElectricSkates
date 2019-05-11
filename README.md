@@ -1,7 +1,7 @@
 # AlitaElectricSkates
 
-[![Travis CI](https://img.shields.io/travis/com/M0nteCarl0/AlitaElectricSkates.svg?style=flat-square)](https://travis-ci.com/M0nteCarl0/AlitaElectricSkates)
-[![contributors: welcome](https://img.shields.io/badge/contributors-welcome-brightgreen.svg?style=flat-square)](https://github.com/M0nteCarl0/AlitaElectricSkates)
+[![Travis CI](https://img.shields.io/travis/com/alita-battle-angel/AlitaElectricSkates.svg?style=flat-square)](https://travis-ci.com/alita-battle-angel/AlitaElectricSkates)
+[![contributors: welcome](https://img.shields.io/badge/contributors-welcome-brightgreen.svg?style=flat-square)](https://github.com/alita-battle-angel/AlitaElectricSkates)
 [![Alita: Battle Angel](https://img.shields.io/badge/Alita-Battle%20Angel-red.svg?style=flat-square)](https://en.wikipedia.org/wiki/Alita:_Battle_Angel)
 
 Source code, documentation, 3D models and blueprints of parts for **roller skates with electric motors**, inspired by a fictional game called Motorball from the manga [Battle Angel Alita](https://en.wikipedia.org/wiki/Battle_Angel_Alita) and its live-action movie adaptation [Alita: Battle Angel](https://en.wikipedia.org/wiki/Alita:_Battle_Angel). Author of the idea is [u/TechNotarius](https://reddit.com/user/TechNotarius) ([@M0nteCarl0](https://github.com/M0nteCarl0)) who was almost immediately joined by [u/dmitmel](https://reddit.com/user/dmitmel) ([@dmitmel](https://github.com/dmitmel)).
